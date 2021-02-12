@@ -1,5 +1,3 @@
-// require('dotenv').config();
-// const { Pool } = require("pg");
 const path = require("path");
 const ThreadPool = require("./pool.js");
 const workerScript = path.join(__dirname, "./worker.js");

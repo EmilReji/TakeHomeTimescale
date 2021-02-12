@@ -35,7 +35,7 @@ const { parentPort, workerData, isMainThread } = require("worker_threads");
 // }
 
 require('dotenv').config();
-const { Client, Pool } = require('pg');
+const { Client } = require('pg');
 const connectionString = process.env.CONNECTION_STRING;
 const client = new Client({
   connectionString,
