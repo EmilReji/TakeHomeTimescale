@@ -33,8 +33,8 @@ module.exports = class Pool {
     const self = this
 
     const worker = new Worker(filename, opts)
-    worker.once('error', done)
-    worker.once('exit', done)
+    worker.once('error', done);
+    worker.once('exit', done);
 
     this._workers.add(worker)
 
