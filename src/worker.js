@@ -10,6 +10,10 @@ const { parentPort, workerData, isMainThread } = require("worker_threads");
 // }
 
 
+/*
+Creates 10 workers in pool first
+Takes far less time for queries (6 sec for 200) but a lot more time in between (200 for 200)
+*/
 // require('dotenv').config();
 // const { Pool } = require("pg");
 // const connectionString = process.env.CONNECTION_STRING;
@@ -25,7 +29,7 @@ const { parentPort, workerData, isMainThread } = require("worker_threads");
 //       let after = Date.now();
 //       let time = after - before;
 //       // we post a message through the parent port, to emit the "message" event
-//       parentPort.postMessage(time); // returns same array passed in
+//       parentPort.postMessage(time);
 //     } finally {
 //       // Make sure to release the client before any error handling,
 //       // just in case the error handling itself throws an error.
@@ -34,6 +38,11 @@ const { parentPort, workerData, isMainThread } = require("worker_threads");
 //   })().catch(err => console.log(err.stack))
 // }
 
+
+/* 
+Creates 1 to 2 workers in pool first, then runs and exits and adds another
+Takes far less more time for queries (44 sec for 200) but a lot less time in between (55 sec for 200)
+*/
 require('dotenv').config();
 const { Client } = require('pg');
 const connectionString = process.env.CONNECTION_STRING;
@@ -50,7 +59,7 @@ if (!isMainThread) {
       let after = Date.now();
       let time = after - before;
       // we post a message through the parent port, to emit the "message" event
-      parentPort.postMessage(time); // returns same array passed in
+      parentPort.postMessage(time);
     } catch (err) {
       console.log(err.stack)
     }
