@@ -9,10 +9,7 @@ async function runQuery(queryObj, threadPool) {
         return reject(err);
       }
       let id = worker.threadId;
-      console.log(`started worker ${id} (pool size: ${threadPool.size})`);
-      worker.on('exit', function () {
-        console.log(`worker ${id} exited (pool size: ${threadPool.size})`)
-      })
+
       worker.once("message", resolve);
       worker.once("error", reject);
     });
@@ -24,7 +21,6 @@ async function runQueries(queries, workers) {
   const threadPool = new ThreadPool({ max: workers });
 
   for (const queryObj of queries) {
-    // console.log(`Running query for: ${queryObj.values}`)
     let time = await runQuery(queryObj, threadPool);
     times.push(time);
   }

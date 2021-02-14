@@ -10,7 +10,6 @@ const app = async (filePath, workers) => {
   let before = Date.now();
   let times = await runQueries(queries, workers);
   let after = Date.now();
-  console.log("reaching end");
 
   times.sort((a, b) => (a - b));
   let half = Math.floor(times.length / 2);
