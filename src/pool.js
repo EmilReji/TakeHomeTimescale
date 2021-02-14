@@ -1,5 +1,5 @@
 'use strict'
-// modified version of https://github.com/watson/worker-threads-pool
+// https://github.com/watson/worker-threads-pool
 const { Worker } = require('worker_threads');
 const { AsyncResource } = require('async_hooks');
 const afterAll = require('after-all');

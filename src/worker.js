@@ -41,7 +41,8 @@ Takes far less time for queries (6 sec for 200) but a lot more time in between (
 
 /* 
 Creates 1 to 2 workers in pool first, then runs and exits and adds another
-Takes far less more time for queries (44 sec for 200) but a lot less time in between (55 sec for 200)
+Takes less time total
+44 sec for 200 for queries and 55 sec for 200 for in total
 */
 require('dotenv').config();
 const { Client } = require('pg');
